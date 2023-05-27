@@ -27,6 +27,9 @@ public class GameManager : MonoBehaviour
     public Result uiResult;
     public GameObject enemyCleaner;
     public swamp swamp;
+    public swamp swamp1;
+    public swamp swamp2;
+    public swamp swamp3;
 
     void Awake()
     {
@@ -39,11 +42,11 @@ public class GameManager : MonoBehaviour
         health = maxHealth;
 
         player.gameObject.SetActive(true);
-        uiLevelUp.Select(playerId % 2);  // ÀÓ½Ã ½ºÅ©¸³Æ® (Ã¹¹øÂ° Ä³¸¯ÅÍ ¼±ÅÃ)
+        uiLevelUp.Select(playerId % 2);  // ï¿½Ó½ï¿½ ï¿½ï¿½Å©ï¿½ï¿½Æ® (Ã¹ï¿½ï¿½Â° Ä³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
         Resume();
 
         AudioManager.instance.PlayBgm(true);
-        AudioManager.instance.PlaySfx(AudioManager.Sfx.Select);//È¿°úÀ½À» Àç»ýÇÒ ºÎºÐ¸¶´Ù Àç»ýÇÔ¼ö È£Ãâ
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Select);//È¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ÎºÐ¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ È£ï¿½ï¿½
     }
 
     public void GameOver()
@@ -85,7 +88,7 @@ public class GameManager : MonoBehaviour
 
     public void GameRetry()
     {
-        SceneManager.LoadScene(0);    // LoadScene : ÀÌ¸§ È¤Àº ÀÎµ¦½º·Î Àå¸éÀ» »õ·Ó°Ô ºÎ¸£´Â ÇÔ¼ö
+        SceneManager.LoadScene(0);    // LoadScene : ï¿½Ì¸ï¿½ È¤ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ó°ï¿½ ï¿½Î¸ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½
     }
 
 
@@ -108,7 +111,7 @@ public class GameManager : MonoBehaviour
 
         exp++;
         
-        if (exp == nextExp[Mathf.Min(level, nextExp.Length-1)])   //MinÇÔ¼ö·Î ÃÖ°í °æÇèÄ¡¸¦ ±×´ë·Î »ç¿ëÇÏµµ·Ï º¯°æ
+        if (exp == nextExp[Mathf.Min(level, nextExp.Length-1)])   //Minï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½Ö°ï¿½ ï¿½ï¿½ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½×´ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         {
             level++;
             exp = 0;
@@ -116,14 +119,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // ·¹º§¾÷½Ã ½Ã°£Á¤Áö
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ï¿½ï¿½
     public void Stop()
     {
         isLive = false;
-        Time.timeScale = 0;     //timeScale : À¯´ÏÆ¼ÀÇ ½Ã°£ ¼Óµµ(¹èÀ²)
+        Time.timeScale = 0;     //timeScale : ï¿½ï¿½ï¿½ï¿½Æ¼ï¿½ï¿½ ï¿½Ã°ï¿½ ï¿½Óµï¿½(ï¿½ï¿½ï¿½ï¿½)
 
     }
-    // ½Ã°£ ÀÛµ¿
+    // ï¿½Ã°ï¿½ ï¿½Ûµï¿½
     public void Resume()
     {
         isLive = true;

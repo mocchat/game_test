@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     public RuntimeAnimatorController[] animCon;
 
 
+
     Rigidbody2D rigid;
     SpriteRenderer spriter;
     Animator anim;
@@ -29,6 +30,14 @@ public class Player : MonoBehaviour
     {
         speed *= Character.Speed;
         anim.runtimeAnimatorController = animCon[GameManager.instance.playerId];
+        GameManager.instance.swamp.player_speed = speed;
+        GameManager.instance.swamp1.player_speed = speed;
+        GameManager.instance.swamp2.player_speed = speed;
+        GameManager.instance.swamp3.player_speed = speed;
+        GameManager.instance.swamp.true_speed = speed;
+        GameManager.instance.swamp1.true_speed = speed;
+        GameManager.instance.swamp2.true_speed = speed;
+        GameManager.instance.swamp3.true_speed = speed;
     }
 
     void Update()

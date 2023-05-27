@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    //ÇÃ·¹ÀÌ¾îÀÇ ¾ÆÀÌµð¿¡ µû¶ó Áõ°¡ ¹èÀ²ÀÌ ´Ù¸§.»ïÇ×¿¬»çÀÚ È°¿ë
+    //ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¸ï¿½.ï¿½ï¿½ï¿½×¿ï¿½ï¿½ï¿½ï¿½ï¿½ È°ï¿½ï¿½
     public static float Speed
     {
         get {return GameManager.instance.playerId == 0 ? 1.1f : 1f; }

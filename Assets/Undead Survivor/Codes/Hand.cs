@@ -13,7 +13,7 @@ public class Hand : MonoBehaviour
 
     Vector3 rightPos = new Vector3(0.35f, -0.15f, 0);
     Vector3 rightPosReverse = new Vector3(-0.15f, -0.15f, 0);
-    Quaternion leftRot = Quaternion.Euler(0, 0, -35);     // ¿Þ¼Õ °¢ È¸ÀüÀ» Quatanion ÇüÅÂ·Î ÀúÀå
+    Quaternion leftRot = Quaternion.Euler(0, 0, -35);     // ï¿½Þ¼ï¿½ ï¿½ï¿½ È¸ï¿½ï¿½ï¿½ï¿½ Quatanion ï¿½ï¿½ï¿½Â·ï¿½ ï¿½ï¿½ï¿½ï¿½
     Quaternion leftRotReverse = Quaternion.Euler(0, 0, -135);
 
     void Awake()
@@ -29,14 +29,14 @@ public class Hand : MonoBehaviour
         
         if (isLeft)
         {
-            // ±ÙÁ¢¹«±â
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             transform.localRotation = isReverse ? leftRotReverse : leftRot;
             spriter.flipY = isReverse;
             spriter.sortingOrder = isReverse ? 4 : 6;
         }
         else
         {
-            // ¿ø°Å¸®¹«±â
+            // ï¿½ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½ï¿½
             transform.localPosition = isReverse ? rightPosReverse : rightPos;
             spriter.flipX = isReverse;
             spriter.sortingOrder = isReverse ? 6 : 4;

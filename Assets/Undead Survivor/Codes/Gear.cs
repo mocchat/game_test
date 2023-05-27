@@ -24,16 +24,16 @@ public class Gear : MonoBehaviour
     public void LevelUp(float rate)
     {
         this.rate = rate;
-        ApplyGear();   //Àåºñ°¡ »õ·Ó°Ô Ãß°¡µÇ°Å³ª ·¹º§¾÷ ÇÒ ¶§ ·ÎÁ÷Àû¿ë ÇÔ¼ö¸¦ È£Ãâ
+        ApplyGear();   //ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ó°ï¿½ ï¿½ß°ï¿½ï¿½Ç°Å³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½ï¿½ï¿½ È£ï¿½ï¿½
     }
 
 
-    //Å¸ÀÔ¿¡ µû¶ó ÀûÀýÇÏ°Ô ·ÎÁ÷À» Àû¿ë½ÃÄÑÁÖ´Â ÇÔ¼ö Ãß°¡
-    //ApplyGear°¡ ½ÇÇàµÇ´Â °æ¿ì
-    //1. WeaponÀÌ »õ·Î »ý¼ºµÇ¾úÀ» ¶§
-    //2. WeaponÀÌ ¾÷±×·¹ÀÌµå µÇ¾úÀ» ¶§
-    //3. Gear°¡ »õ·Î »ý°åÀ» ¶§
-    //4. GearÀÚÃ¼°¡ ·¹º§¾÷ µÇ¾úÀ» ¶§
+    //Å¸ï¿½Ô¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½Ô¼ï¿½ ï¿½ß°ï¿½
+    //ApplyGearï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç´ï¿½ ï¿½ï¿½ï¿½
+    //1. Weaponï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ ï¿½ï¿½
+    //2. Weaponï¿½ï¿½ ï¿½ï¿½ï¿½×·ï¿½ï¿½Ìµï¿½ ï¿½Ç¾ï¿½ï¿½ï¿½ ï¿½ï¿½
+    //3. Gearï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+    //4. Gearï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ç¾ï¿½ï¿½ï¿½ ï¿½ï¿½
     void ApplyGear()
     {
         switch (type)
@@ -48,7 +48,7 @@ public class Gear : MonoBehaviour
     }
 
 
-    //Àå°©ÀÇ ±â´ÉÀÎ ¿¬»ç·ÂÀ» ¿Ã¸®´Â ÇÔ¼ö
+    //ï¿½å°©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¸ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½
     void RateUp()
     {
         Weapon[] weapons = transform.parent.GetComponentsInChildren<Weapon>();
@@ -72,8 +72,11 @@ public class Gear : MonoBehaviour
     void SpeedUp()
     {
         float speed = 3 * Character.Speed;
+        GameManager.instance.swamp.player_speed = speed + speed * rate;
+        GameManager.instance.swamp1.player_speed = speed + speed * rate;
+        GameManager.instance.swamp2.player_speed = speed + speed * rate;
+        GameManager.instance.swamp3.player_speed = speed + speed * rate;
         GameManager.instance.player.speed = speed + speed * rate;
-        GameManager.instance.swamp.player_speed = speed + speed * rate; 
     }
 
 

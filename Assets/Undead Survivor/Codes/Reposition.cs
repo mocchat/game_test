@@ -53,8 +53,8 @@ public class Reposition : MonoBehaviour
                 float diffyy = playerPos.y - myPos.y;
                 float dirXx = diffxx < 0 ? -1 : 1;
                 float dirYy = diffyy < 0 ? -1 : 1;
-                diffx = Mathf.Abs(diffxx);
-                diffy = Mathf.Abs(diffyy);
+                diffxx = Mathf.Abs(diffxx);
+                diffyy = Mathf.Abs(diffyy);
 
 
                 if (diffxx > diffyy)

@@ -15,7 +15,7 @@ public class Weapon : MonoBehaviour
     Player player;
 
     void Awake() {
-        // Awake ÇÔ¼ö¿¡¼­ÀÇ ÇÃ·¹ÀÌ¾î ÃÊ±âÈ­´Â °ÔÀÓ ¸Å´ÏÀú È°¿ëÀ¸·Î º¯°æ
+        // Awake ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½Ê±ï¿½È­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Å´ï¿½ï¿½ï¿½ È°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         player = GameManager.instance.player;
     }
 
@@ -55,7 +55,7 @@ public class Weapon : MonoBehaviour
     }
 
     public void Init(ItemData data) {
-        // ½ºÅ©¸³Æ®ºí ¿ÀºêÁ§Æ®ÀÇ µ¶¸³¼ºÀ» À§ÇØ¼­ ÀÎµ¦½º°¡ ¾Æ´Ñ ÇÁ¸®ÆéÀ¸·Î ¼³Á¤
+        // ï¿½ï¿½Å©ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Æ´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
         //basic Set
         name = "Weapon " + data.itemId;
@@ -95,7 +95,7 @@ public class Weapon : MonoBehaviour
 
 
 
-        //BroadcastMessage : Æ¯Á¤ ÇÔ¼ö È£ÃâÀ» ¸ðµç ÀÚ½Ä¿¡°Ô ¹æ¼ÛÇÏ´Â ÇÔ¼ö
+        //BroadcastMessage : Æ¯ï¿½ï¿½ ï¿½Ô¼ï¿½ È£ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ú½Ä¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ô¼ï¿½
         player.BroadcastMessage("ApplyGear", SendMessageOptions.DontRequireReceiver);
     }
 
@@ -117,21 +117,21 @@ public class Weapon : MonoBehaviour
             bullet.Rotate(rotVec);
             bullet.Translate(bullet.up * 1.5f, Space.World);
 
-            bullet.GetComponent<Bullet>().Init(damage, -100, Vector3.zero); // -100 Àº ¹«ÇÑ °üÅë
+            bullet.GetComponent<Bullet>().Init(damage, -100, Vector3.zero); // -100 ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         }
     }
     void Fire() {
         if (!player.scanner.nearestTarget)
             return;
-        // ÃÑ¾ËÀÌ ³ª¾Æ°¡°íÀÚ ÇÏ´Â ¹æÇâ ¼³Á¤
+        // ï¿½Ñ¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         Vector3 targetPos = player.scanner.nearestTarget.position;
         Vector3 dir = targetPos - transform.position;
         dir = dir.normalized;
 
-        // À§Ä¡¿Í È¸Àü °áÁ¤
+        // ï¿½ï¿½Ä¡ï¿½ï¿½ È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         Transform bullet = GameManager.instance.pool.Get(prefabId).transform;
         bullet.position = transform.position;
-        bullet.rotation = Quaternion.FromToRotation(Vector3.up, dir); // FromToRotation: ÁöÁ¤µÈ ÃàÀ» Áß½ÉÀ¸·Î ¸ñÇ¥¸¦ ÇâÇØ È¸ÀüÇÏ´Â ÇÔ¼ö
+        bullet.rotation = Quaternion.FromToRotation(Vector3.up, dir); // FromToRotation: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ô¼ï¿½
         bullet.GetComponent<Bullet>().Init(damage, count, dir);
 
         AudioManager.instance.PlaySfx(AudioManager.Sfx.Range);
