@@ -47,25 +47,6 @@ public class Reposition : MonoBehaviour
                     transform.Translate(ran + dist * 2);
                 }
                 break;
-
-            case "swamp":
-                float diffxx = playerPos.x - myPos.x;
-                float diffyy = playerPos.y - myPos.y;
-                float dirXx = diffxx < 0 ? -1 : 1;
-                float dirYy = diffyy < 0 ? -1 : 1;
-                diffxx = Mathf.Abs(diffxx);
-                diffyy = Mathf.Abs(diffyy);
-
-
-                if (diffxx > diffyy)
-                {
-                    transform.Translate(Vector3.right * dirXx * 40);
-                }
-                else if (diffxx < diffyy)
-                {
-                    transform.Translate(Vector3.up * dirYy * 40);
-                }
-                break;
         }
     }
 }
