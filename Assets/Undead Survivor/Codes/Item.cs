@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Item : MonoBehaviour
 {
-    // ¾ÆÀÌÅÛ °ü¸®¿¡ ÇÊ¿äÇÑ º¯¼öµé ¼±¾ð
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public ItemData data;
     public int level;
     public Weapon weapon;
@@ -31,11 +31,12 @@ public class Item : MonoBehaviour
     {
         textLevel.text = "Lv." + (level + 1);
 
-        switch (data.itemType)     // ¾ÆÀÌÅÛ Å¸ÀÔ¿¡ µû¶ó switch case¹®À¸·Î ·ÎÁ÷ ºÐ¸®
+        switch (data.itemType)     // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½Ô¿ï¿½ ï¿½ï¿½ï¿½ï¿½ switch caseï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ð¸ï¿½
         {
             case ItemData.ItemType.Melee:
             case ItemData.ItemType.Range:
-                textDesc.text = string.Format(data.itemDesc, data.damages[level] * 100, data.counts[level]);  // µ¥¹ÌÁö »ó½ÂÀ» º¸¿©ÁÙ ¶© °öÇÏ±â 100
+            case ItemData.ItemType.Sickle:
+                textDesc.text = string.Format(data.itemDesc, data.damages[level] * 100, data.counts[level]);  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ï±ï¿½ 100
                 break;
             case ItemData.ItemType.Glove:
             case ItemData.ItemType.Shoe:
@@ -55,6 +56,7 @@ public class Item : MonoBehaviour
         {
             case ItemData.ItemType.Melee:
             case ItemData.ItemType.Range:
+            case ItemData.ItemType.Sickle:
                 if ( level == 0)
                 {
                     GameObject newWeapon = new GameObject();
@@ -96,7 +98,7 @@ public class Item : MonoBehaviour
 
         
 
-        //½ºÅ©¸³Æ®ºí ¿ÀºêÁ§Æ®¿¡ ÀÛ¼ºÇÑ ·¹º§ µ¥ÀÌÅÍ °³¼ö¸¦ ³Ñ±âÁö ¾Ê°Ô ·ÎÁ÷ Ãß°¡
+        //ï¿½ï¿½Å©ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Û¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ±ï¿½ï¿½ï¿½ ï¿½Ê°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
         if (level == data.damages.Length)
         {
             GetComponent<Button>().interactable = false;

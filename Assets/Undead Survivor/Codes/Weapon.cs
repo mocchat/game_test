@@ -12,9 +12,11 @@ public class Weapon : MonoBehaviour
     public float speed;
 
     float timer;
+    float S_timer;
     Player player;
 
-    void Awake() {
+    void Awake()
+    {
         // Awake �Լ������� �÷��̾� �ʱ�ȭ�� ���� �Ŵ��� Ȱ������ ����
         player = GameManager.instance.player;
     }
@@ -25,26 +27,38 @@ public class Weapon : MonoBehaviour
         if (!GameManager.instance.isLive)
             return;
 
-        switch (id) {
+        switch (id)
+        {
             case 0:
                 transform.Rotate(Vector3.back * speed * Time.deltaTime);
                 break;
-            default:
+            case 1:
                 timer += Time.deltaTime;
 
-                if (timer > speed) {
+                if (timer > speed)
+                {
                     timer = 0f;
                     Fire();
                 }
                 break;
+            case 5:
+                S_timer += Time.deltaTime;
+                if (S_timer > speed * 5)
+                {
+                    S_timer = 0f;
+                    sickle();
+                }
+                break;
         }
         // .. Test Code
-        if (Input.GetButtonDown("Jump")) {
+        if (Input.GetButtonDown("Jump"))
+        {
             LevelUp(10, 1);
         }
     }
 
-    public void LevelUp(float damage, int count) {
+    public void LevelUp(float damage, int count)
+    {
         this.damage = damage * Character.Damage;
         this.count += count;
 
@@ -54,7 +68,8 @@ public class Weapon : MonoBehaviour
         player.BroadcastMessage("ApplyGear", SendMessageOptions.DontRequireReceiver);
     }
 
-    public void Init(ItemData data) {
+    public void Init(ItemData data)
+    {
         // ��ũ��Ʈ�� ������Ʈ�� �������� ���ؼ� �ε����� �ƴ� ���������� ����
 
         //basic Set
@@ -62,15 +77,15 @@ public class Weapon : MonoBehaviour
         transform.parent = player.transform;
         transform.localPosition = Vector3.zero;
 
-
         //Property Set
         id = data.itemId;
+        print(id);
         damage = data.baseDamage * Character.Damage;
         count = data.baseCount + Character.Count;
 
         for (int index = 0; index < GameManager.instance.pool.prefabs.Length; index++)
         {
-            if ( data.projectile == GameManager.instance.pool.prefabs[index])
+            if (data.projectile == GameManager.instance.pool.prefabs[index])
             {
                 prefabId = index;
                 break;
@@ -78,7 +93,8 @@ public class Weapon : MonoBehaviour
         }
 
 
-        switch (id) {
+        switch (id)
+        {
             case 0:
                 speed = 150 * Character.WeaponSpeed;
                 Batch();
@@ -89,9 +105,13 @@ public class Weapon : MonoBehaviour
         }
 
         // Hand Set
-        Hand hand = player.hands[(int)data.itemType];
-        hand.spriter.sprite = data.hand;
-        hand.gameObject.SetActive(true);
+        if (id != 5)
+        {
+            Hand hand = player.hands[(int)data.itemType];
+            hand.spriter.sprite = data.hand;
+            hand.gameObject.SetActive(true);
+        }
+        
 
 
 
@@ -99,13 +119,18 @@ public class Weapon : MonoBehaviour
         player.BroadcastMessage("ApplyGear", SendMessageOptions.DontRequireReceiver);
     }
 
-    void Batch() {
-        for (int index = 0; index < count; index++) {
+    void Batch()
+    {
+        for (int index = 0; index < count; index++)
+        {
             Transform bullet;
-            
-            if (index < transform.childCount) {
+
+            if (index < transform.childCount)
+            {
                 bullet = transform.GetChild(index);
-            } else {
+            }
+            else
+            {
                 bullet = GameManager.instance.pool.Get(prefabId).transform;
                 bullet.parent = transform;
             }
@@ -120,7 +145,8 @@ public class Weapon : MonoBehaviour
             bullet.GetComponent<Bullet>().Init(damage, -100, Vector3.zero); // -100 �� ���� ����
         }
     }
-    void Fire() {
+    void Fire()
+    {
         if (!player.scanner.nearestTarget)
             return;
         // �Ѿ��� ���ư����� �ϴ� ���� ����
@@ -136,4 +162,23 @@ public class Weapon : MonoBehaviour
 
         AudioManager.instance.PlaySfx(AudioManager.Sfx.Range);
     }
+
+    void sickle()
+    {
+        if (!player.scanner.nearestTarget)
+            return;
+        // �Ѿ��� ���ư����� �ϴ� ���� ����
+        Vector3 targetPos = player.scanner.nearestTarget.position;
+        Vector3 dir = targetPos - transform.position;
+        dir = dir.normalized;
+
+        // ��ġ�� ȸ�� ����
+        Transform bullet = GameManager.instance.pool.Get(prefabId).transform;
+        bullet.position = transform.position;
+        bullet.rotation = Quaternion.FromToRotation(Vector3.up, dir); // FromToRotation: ������ ���� �߽����� ��ǥ�� ���� ȸ���ϴ� �Լ�
+        bullet.GetComponent<Bullet>().Init(damage, 100 + count, dir);
+
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Range);
+    }
+
 }

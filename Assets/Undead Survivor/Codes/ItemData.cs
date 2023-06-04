@@ -4,13 +4,13 @@ using UnityEngine;
 
 
 
-//CreateAssetMenu : Ä¿½ºÅÒ ¸Þ´º¸¦ Á÷Á¢ »ý¼ºÇÏ´Â ¼Ó¼º
-[CreateAssetMenu(fileName = "Item", menuName = "Scriptble object/ItemData")]  //Scriptble Object : ´Ù¾çÇÑ µ¥ÀÌÅÍ¸¦ ÀúÀåÇÏ´Â ¿¡¼Â(DataÆú´õ¿¡ ÀÖ´Â ¿ÀºêÁ§Æ®)
+//CreateAssetMenu : Ä¿ï¿½ï¿½ï¿½ï¿½ ï¿½Þ´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ó¼ï¿½
+[CreateAssetMenu(fileName = "Item", menuName = "Scriptble object/ItemData")]  //Scriptble Object : ï¿½Ù¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½(Dataï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®)
 public class ItemData : ScriptableObject
 {
-    public enum ItemType {  Melee, Range, Glove, Shoe, Heal}
+    public enum ItemType {  Melee, Range, Glove, Shoe, Heal, Sickle }
 
-    // ¾ÆÀÌÅÛÀÇ °¢Á¾ ¼Ó¼ºµéÀ» º¯¼ö·Î ÀÛ¼ºÇÏ±â
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ó¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½ï¿½Ï±ï¿½
     [Header("# Main Info")]
     public ItemType itemType;
     public int itemId;

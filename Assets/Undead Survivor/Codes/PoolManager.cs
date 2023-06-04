@@ -20,8 +20,8 @@ public class PoolManager : MonoBehaviour
     public GameObject Get(int index) {
         GameObject select = null;
         
-        // ... ¼±ÅÃÇÑ Ç®ÀÇ ³î°í ÀÖ´Â(ºñÈ°¼ºÈ­ µÈ) °ÔÀÓ ¿ÀºêÁ§Æ® Á¢±Ù
-            // ... ¹ß°ßÇÏ¸é selectº¯¼ö¿¡ ÇÒ´ç
+        // ... ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ç®ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½(ï¿½ï¿½È°ï¿½ï¿½È­ ï¿½ï¿½) ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
+            // ... ï¿½ß°ï¿½ï¿½Ï¸ï¿½ selectï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò´ï¿½
         foreach(GameObject item in pools[index]) {
             if (!item.activeSelf) {
                 select = item;
@@ -29,9 +29,9 @@ public class PoolManager : MonoBehaviour
                 break;
             }
         }
-        // ... ¸øÃ£¾ÒÀ¸¸é
+        // ... ï¿½ï¿½Ã£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         if (!select) {
-            // ... »õ·Ó°Ô »ý¼ºÇÏ°í selectº¯¼ö¿¡ ÇÒ´ç
+            // ... ï¿½ï¿½ï¿½Ó°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ selectï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò´ï¿½
             select = Instantiate(prefabs[index], transform);
             pools[index].Add(select);
         }
